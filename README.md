@@ -45,8 +45,9 @@ replace: {
   dist: {
     src: ['build/manifest.appcache'],
     dest: 'public',
+    ejs: false,
     variables: {
-      timestamp: '<%= grunt.template.today() %>'
+      version: 0.5
     }
   }
 }

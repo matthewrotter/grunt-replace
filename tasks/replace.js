@@ -51,8 +51,13 @@ module.exports = function (grunt) {
 
     Object.keys(variables).forEach(function (variable) {
       var value = variables[variable];
-      if (typeof value === 'string') {
-        locals[grunt.template.process(variable)] = grunt.template.process(value);
+      if (typeof config.ejs === 'boolean' && !config.ejs) {
+        // here we are just taking straight value
+        locals[variable] = value;
+      } else {
+        if (typeof value === 'string') {
+          locals[grunt.template.process(variable)] = grunt.template.process(value);
+        }
       }
     });
 
